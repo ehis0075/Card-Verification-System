@@ -17,11 +17,4 @@ public class CustomerDTO {
 
     private String email;
 
-    private boolean enabled;
-
-    private String phoneNumber;
-
-    private boolean isLoggedIn;
-
-    private UserSecurityDetailsDTO userSecurityDetailsDTO;
 }

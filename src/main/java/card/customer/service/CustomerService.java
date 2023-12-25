@@ -1,13 +1,11 @@
-//package card.bank.customer.service;
-//
-//
-//import card.bank.customer.dto.CreateCustomerDTO;
-//import card.bank.customer.dto.CustomerDTO;
-//
-//public interface CustomerService {
-//
-//    CustomerDTO addCustomer(CreateCustomerDTO createAdminUserDto);
-//
-//    Long getCustomerIdByEmail(String email);
-//}
-//
+package card.customer.service;
+
+
+import card.customer.dto.CreateCustomerDTO;
+import card.customer.dto.CustomerDTO;
+
+public interface CustomerService {
+
+    CustomerDTO addCustomer(CreateCustomerDTO createAdminUserDto);
+}
+
