@@ -35,15 +35,11 @@ public class CardVerificationServiceImpl implements CardVerificationService {
     }
 
     @Override
-    public Mono<ClientResponse> verifyCard2(String card) {
+    public Mono<ClientResponse> verifyCard2(String bin) {
 
-        CardVerificationResponse cardDetails = processorService.getCardDetails(card);
+        CardVerificationResponse cardDetails = processorService.getCardDetails(bin);
 
-        return getClientResponse2(cardDetails, card);
-    }
-
-    public List<CardHit> getLimitedCardHits(int limit) {
-        return cardHitRepository.findAll(PageRequest.of(0, limit)).getContent();
+        return getClientResponse2(cardDetails, bin);
     }
 
     @Override
@@ -62,6 +58,10 @@ public class CardVerificationServiceImpl implements CardVerificationService {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
         return new StatsResponse(true, start, limit, size, paginatedHits);
+    }
+
+    public List<CardHit> getLimitedCardHits(int limit) {
+        return cardHitRepository.findAll(PageRequest.of(0, limit)).getContent();
     }
 
     public Map<String, String> convertToMap(List<CardHit> cardHitList) {

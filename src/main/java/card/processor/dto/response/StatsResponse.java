@@ -14,6 +14,4 @@ public class StatsResponse {
     private int limit;
     private int size;
     private Map<String, String> payload;
-
-
 }
