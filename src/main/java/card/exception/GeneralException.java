@@ -14,6 +14,6 @@ public class GeneralException extends RuntimeException {
     }
 
     public GeneralException(String serviceUnavailable) {
-        super("00", new Throwable(serviceUnavailable));
+        super(new Throwable(serviceUnavailable));
     }
 }

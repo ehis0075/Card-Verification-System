@@ -20,25 +20,25 @@ public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
 
     @Override
-    public CustomerDTO addCustomer(CreateCustomerDTO createAdminUserDto) {
-        log.info("Request to create a customer with payload = {}", createAdminUserDto);
+    public CustomerDTO addCustomer(CreateCustomerDTO createCustomerDTO) {
+        log.info("Request to create a customer with payload = {}", createCustomerDTO);
 
-        //create new admin user
+        //create new customer
         Customer customer = new Customer();
         customer.setEmail(customer.getEmail());
-        customer.setFirstName(createAdminUserDto.getFirstName());
-        customer.setLastName(createAdminUserDto.getLastName());
+        customer.setFirstName(createCustomerDTO.getFirstName());
+        customer.setLastName(createCustomerDTO.getLastName());
 
         // save to db
-        Customer savedAdminUser = saveAdminUser(customer);
+        Customer savedAdminUser = saveCustomer(customer);
 
         // convert to dto
         return getCustomerDTO(savedAdminUser);
     }
 
-    public Customer saveAdminUser(Customer adminUser) {
+    public Customer saveCustomer(Customer customer) {
         log.info("::: saving customer to db :::");
-        return customerRepository.save(adminUser);
+        return customerRepository.save(customer);
     }
 
     public CustomerDTO getCustomerDTO(Customer customer) {
