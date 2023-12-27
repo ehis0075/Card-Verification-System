@@ -1,10 +1,10 @@
 package card.processor.service.implementation;
 
+import card.exception.GeneralException;
+import card.general.service.GeneralService;
 import card.http.HttpService;
 import card.processor.dto.response.CardVerificationResponse;
 import card.processor.service.ProcessorService;
-import card.exception.GeneralException;
-import card.general.service.GeneralService;
 import com.google.gson.Gson;
 import kong.unirest.HttpResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -39,15 +39,15 @@ public class ProcessorServiceImpl implements ProcessorService {
     }
 
     @Override
-    public Mono<CardVerificationResponse> verifyCardScheme(String bin) {
+    public Mono<CardVerificationResponse> verifyCardSchemeWithWebClient(String bin) {
         return webClient.get()
-                .uri("/{bin}", bin)
+                .uri("/" + bin)
                 .retrieve()
                 .bodyToMono(CardVerificationResponse.class);
     }
 
     @Override
-    public CardVerificationResponse getCardDetails(String card) {
+    public CardVerificationResponse verifyCardSchemeWithUnirest(String card) {
         log.info("Making Request to Card details {}", card);
 
         String fullUrl = baseUrl + card;

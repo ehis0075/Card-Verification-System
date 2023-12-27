@@ -9,7 +9,7 @@ public interface CardVerificationService {
 
     Mono<ClientResponse> verifyCard(String card);
 
-    Mono<ClientResponse> verifyCard2(String bin);
+    ClientResponse verifyCard2(String bin);
 
     StatsResponse getCardStats(int start, int limit);
 }

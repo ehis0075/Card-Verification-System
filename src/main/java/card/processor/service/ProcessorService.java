@@ -6,8 +6,8 @@ import reactor.core.publisher.Mono;
 
 public interface ProcessorService {
 
-    Mono<CardVerificationResponse> verifyCardScheme(String cardNumber);
+    Mono<CardVerificationResponse> verifyCardSchemeWithWebClient(String cardNumber);
 
-    CardVerificationResponse getCardDetails(String card);
+    CardVerificationResponse verifyCardSchemeWithUnirest(String card);
 
 }

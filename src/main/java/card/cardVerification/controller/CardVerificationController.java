@@ -1,8 +1,8 @@
 package card.cardVerification.controller;
 
+import card.cardVerification.service.CardVerificationService;
 import card.processor.dto.response.ClientResponse;
 import card.processor.dto.response.StatsResponse;
-import card.cardVerification.service.CardVerificationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
@@ -17,13 +17,22 @@ public class CardVerificationController {
         this.cardVerificationService = cardVerificationService;
     }
 
+//    @RequestMapping(path = "/verify/{bin}", method = RequestMethod.GET, produces = "application/json")
+//    public ClientResponse verifyCard(@PathVariable String bin) {
+//        logMe(bin, 1);
+//        ClientResponse response = cardVerificationService.verifyCard2(bin);
+//        logMe(response, 2);
+//        return response;
+//    }
+
     @RequestMapping(path = "/verify/{bin}", method = RequestMethod.GET, produces = "application/json")
     public Mono<ClientResponse> verifyCard(@PathVariable String bin) {
         logMe(bin, 1);
-        Mono<ClientResponse> response = cardVerificationService.verifyCard2(bin);
+        Mono<ClientResponse> response = cardVerificationService.verifyCard(bin);
         logMe(response, 2);
         return response;
     }
+
 
     @RequestMapping(path = "/stats", method = RequestMethod.GET, produces = "application/json")
     public StatsResponse getCardStats(@RequestParam(name = "start", defaultValue = "1") int start,

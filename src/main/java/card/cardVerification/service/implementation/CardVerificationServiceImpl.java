@@ -29,15 +29,15 @@ public class CardVerificationServiceImpl implements CardVerificationService {
     @Override
     public Mono<ClientResponse> verifyCard(String card) {
 
-        Mono<CardVerificationResponse> cardDetails = processorService.verifyCardScheme(card);
+        Mono<CardVerificationResponse> cardDetails = processorService.verifyCardSchemeWithWebClient(card);
 
         return getClientResponse(cardDetails, card);
     }
 
     @Override
-    public Mono<ClientResponse> verifyCard2(String bin) {
+    public ClientResponse verifyCard2(String bin) {
 
-        CardVerificationResponse cardDetails = processorService.getCardDetails(bin);
+        CardVerificationResponse cardDetails = processorService.verifyCardSchemeWithUnirest(bin);
 
         return getClientResponse2(cardDetails, bin);
     }
@@ -113,7 +113,7 @@ public class CardVerificationServiceImpl implements CardVerificationService {
         });
     }
 
-    private Mono<ClientResponse> getClientResponse2(CardVerificationResponse cardInfoResponse, String card) {
+    private ClientResponse getClientResponse2(CardVerificationResponse cardInfoResponse, String card) {
         Payload payload = new Payload();
 
         payload.setScheme(cardInfoResponse.getScheme());
@@ -122,12 +122,10 @@ public class CardVerificationServiceImpl implements CardVerificationService {
 
         saveCardHit(card);
 
-        ClientResponse clientResponse = ClientResponse.builder()
+        return ClientResponse.builder()
                 .success(true)
                 .payload(payload)
                 .build();
-
-        return Mono.just(clientResponse);
     }
 
     private void saveCardHit(String bin) {
