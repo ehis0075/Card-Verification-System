@@ -1,4 +1,4 @@
-package card.card.model;
+package card.cardVerification.model;
 
 
 import jakarta.persistence.*;

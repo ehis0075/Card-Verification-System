@@ -1,6 +1,6 @@
-package card.card.service.implementation;
+package card.cardVerification.service.implementation;
 
-import card.card.repository.CardHitRepository;
+import card.cardVerification.repository.CardHitRepository;
 import card.processor.dto.response.CardVerificationResponse;
 import card.processor.dto.response.ClientResponse;
 import card.processor.service.ProcessorService;

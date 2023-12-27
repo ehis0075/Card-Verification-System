@@ -1,4 +1,4 @@
-package card.card.service;
+package card.cardVerification.service;
 
 
 import card.processor.dto.response.ClientResponse;

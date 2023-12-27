@@ -1,8 +1,8 @@
-package card.card.controller;
+package card.cardVerification.controller;
 
 import card.processor.dto.response.ClientResponse;
 import card.processor.dto.response.StatsResponse;
-import card.card.service.CardVerificationService;
+import card.cardVerification.service.CardVerificationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;

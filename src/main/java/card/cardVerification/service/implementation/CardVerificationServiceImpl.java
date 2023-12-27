@@ -1,8 +1,8 @@
-package card.card.service.implementation;
+package card.cardVerification.service.implementation;
 
-import card.card.model.CardHit;
-import card.card.repository.CardHitRepository;
-import card.card.service.CardVerificationService;
+import card.cardVerification.model.CardHit;
+import card.cardVerification.repository.CardHitRepository;
+import card.cardVerification.service.CardVerificationService;
 import card.processor.dto.response.*;
 import card.processor.service.ProcessorService;
 import lombok.RequiredArgsConstructor;

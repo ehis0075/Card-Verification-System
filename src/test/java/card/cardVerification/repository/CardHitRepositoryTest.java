@@ -1,6 +1,6 @@
-package card.card.repository;
+package card.cardVerification.repository;
 
-import card.card.model.CardHit;
+import card.cardVerification.model.CardHit;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
