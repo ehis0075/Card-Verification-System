@@ -92,6 +92,7 @@ public class CardVerificationServiceImpl implements CardVerificationService {
 //    }
 
     private Mono<ClientResponse> getClientResponse(Mono<CardVerificationResponse> cardInfoResponse, String bin) {
+        log.info(cardInfoResponse.toString());
         return cardInfoResponse.flatMap(response -> {
             Payload payload = new Payload();
 
@@ -110,7 +111,25 @@ public class CardVerificationServiceImpl implements CardVerificationService {
                     .build();
 
             return Mono.just(clientResponse);
-        });
+        })
+         .onErrorResume(error -> handleErrorResponse(error, bin));
+    }
+
+    private Mono<ClientResponse> handleErrorResponse(Throwable error, String bin) {
+        // Handle the error here, log it, and provide fallback behavior if needed
+        System.out.println("Error occurred: " + error.getMessage());
+
+//        // Create a ClientResponse with an error payload or fallback values
+//        Payload errorPayload = new Payload();
+//        errorPayload.setError("An error occurred");
+
+        ClientResponse errorResponse = ClientResponse.builder()
+                .success(false)
+//                .payload(errorPayload)
+                .build();
+
+        // Return the error response as a Mono
+        return Mono.just(errorResponse);
     }
 
     private ClientResponse getClientResponse2(CardVerificationResponse cardInfoResponse, String card) {

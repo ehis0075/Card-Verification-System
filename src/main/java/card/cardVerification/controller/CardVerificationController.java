@@ -17,21 +17,21 @@ public class CardVerificationController {
         this.cardVerificationService = cardVerificationService;
     }
 
-//    @RequestMapping(path = "/verify/{bin}", method = RequestMethod.GET, produces = "application/json")
-//    public ClientResponse verifyCard(@PathVariable String bin) {
-//        logMe(bin, 1);
-//        ClientResponse response = cardVerificationService.verifyCard2(bin);
-//        logMe(response, 2);
-//        return response;
-//    }
-
     @RequestMapping(path = "/verify/{bin}", method = RequestMethod.GET, produces = "application/json")
-    public Mono<ClientResponse> verifyCard(@PathVariable String bin) {
+    public ClientResponse verifyCard(@PathVariable String bin) {
         logMe(bin, 1);
-        Mono<ClientResponse> response = cardVerificationService.verifyCard(bin);
+        ClientResponse response = cardVerificationService.verifyCard2(bin);
         logMe(response, 2);
         return response;
     }
+
+//    @RequestMapping(path = "/verify/{bin}", method = RequestMethod.GET, produces = "application/json")
+//    public Mono<ClientResponse> verifyCard(@PathVariable String bin) {
+//        logMe(bin, 1);
+//        Mono<ClientResponse> response = cardVerificationService.verifyCard(bin);
+//        logMe(response, 2);
+//        return response;
+//    }
 
 
     @RequestMapping(path = "/stats", method = RequestMethod.GET, produces = "application/json")

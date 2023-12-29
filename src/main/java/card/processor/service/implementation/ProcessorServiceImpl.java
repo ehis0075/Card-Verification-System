@@ -68,6 +68,7 @@ public class ProcessorServiceImpl implements ProcessorService {
         throw new GeneralException("Service unavailable");
     }
 
+
     private CardVerificationResponse getResponse(HttpResponse<String> httpResponse) {
         String body = httpResponse.getBody();
         CardVerificationResponse cardInfoResponse = gson.fromJson(body, CardVerificationResponse.class);
